@@ -1,0 +1,71 @@
+db:
+  database: id_xcff
+  schema: id_xcff
+  ip: 192.168.55.102
+  port: 5432
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://192.168.55.102:5432/id_xcff?searchpath=id_xcff&serverTimezone=Hongkong
+  username: postgres
+  password: postgres
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: ${db.driverClassName}
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+    maxPoolSize: 30
+  jooq:
+    sql-dialect: POSTGRES
+  #http-->servlet
+  servlet:
+    multipart:
+      max-file-size: 50Mb
+      max-request-size: 100Mb
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    static-locations: classpath:/webapp/
+  #flyway
+  flyway:
+    locations: classpath:flywaySQL
+  redis:
+    database: 4
+    host: 192.168.55.116
+    index: 15
+    port: 6379
+    timeout: 6000
+    jedis:
+      pool:
+        max-active: 1000
+        max-wait: -1
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5
+#fdfs:
+#  soTimeout: 1500
+#  connectTimeout: 600
+#  thumbImage:             #缩略图生成参数
+#    width: 150
+#    height: 150
+#  #TrackerList参数,支持多个
+#  trackerList:
+#    - 192.168.55.117:22122
+#  basePath: http://192.168.55.117:22122
+
+repo:
+  driver: com.mysql.jdbc.Driver
+  jdbcUrl: jdbc:mysql://192.168.55.101:3306/xcff_repo?useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true
+  user: root
+  password: root
+
+hdfs:
+  ip: 192.168.55.115
+  port: 8020
+  filePath: /tempFiles/
+
+upload.dir: /uploadfiles
+
+web:
+  localPath: /opt/tempfile/
