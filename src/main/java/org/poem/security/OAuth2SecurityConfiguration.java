@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
@@ -46,7 +48,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-//                .anonymous().disable() //允许匿名访问
+                .anonymous().disable() //允许匿名访问
                 .authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
                 .antMatchers("/test").permitAll();
@@ -96,6 +98,23 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
+    /**
+     * bcrypt - BCryptPasswordEncoder (Also used for encoding)
+     * ldap - LdapShaPasswordEncoder
+     * MD4 - Md4PasswordEncoder
+     * MD5 - new MessageDigestPasswordEncoder("MD5")
+     * noop - NoOpPasswordEncoder
+     * pbkdf2 - Pbkdf2PasswordEncoder
+     * scrypt - SCryptPasswordEncoder
+     * SHA-1 - new MessageDigestPasswordEncoder("SHA-1")
+     * SHA-256 - new MessageDigestPasswordEncoder("SHA-256")
+     * sha256 - StandardPasswordEncoder
+     * @return
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
 }
