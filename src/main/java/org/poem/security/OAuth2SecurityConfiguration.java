@@ -30,6 +30,8 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
+
+//        auth.userDetailsService()
         auth.inMemoryAuthentication()
                 .withUser("bill").password("abc123").roles("ADMIN").and()
                 .withUser("bob").password("abc123").roles("USER");
@@ -44,7 +46,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .anonymous().disable()
+//                .anonymous().disable() //允许匿名访问
                 .authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
                 .antMatchers("/test").permitAll();
@@ -92,5 +94,8 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         store.setTokenStore(tokenStore);
         return store;
     }
+
+
+
 
 }

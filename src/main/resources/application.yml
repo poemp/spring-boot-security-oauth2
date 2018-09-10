@@ -1,18 +1,4 @@
-db:
-  database: id_xcff
-  schema: id_xcff
-  ip: 192.168.55.102
-  port: 5432
-  driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://192.168.55.102:5432/id_xcff?searchpath=id_xcff&serverTimezone=Hongkong
-  username: postgres
-  password: 123456
-
-spring:
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driverClassName: ${db.driverClassName}
-    url: ${db.url}
-    username: ${db.username}
-    password: ${db.password}
-    maxPoolSize: 30
+#logging:
+#  level:
+#    root:
+#      debug
