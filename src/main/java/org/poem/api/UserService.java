@@ -20,14 +20,34 @@ public interface UserService extends UserDetailsService {
      */
     User findById(long id);
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     boolean isUserExist(User user);
 
+    /**
+     *
+     * @param user
+     */
     void saveUser(User user);
 
+    /**
+     *
+     * @param currentUser
+     */
     void updateUser(User currentUser);
 
+    /**
+     *
+     * @param id
+     */
     void deleteUserById(long id);
 
+    /**
+     *
+     */
     void deleteAllUsers();
 
 }
