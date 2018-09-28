@@ -35,8 +35,9 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //        auth.userDetailsService()
         auth.inMemoryAuthentication()
-                .withUser("bill").password("abc123").roles("ADMIN").and()
-                .withUser("bob").password("abc123").roles("USER");
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .withUser("bill").password(new BCryptPasswordEncoder( ).encode("abc123")).roles("ADMIN").and()
+                .withUser("bob").password(new BCryptPasswordEncoder( ).encode("abc123")).roles("USER");
     }
 
     /**
@@ -61,7 +62,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**");
+        web.ignoring().antMatchers("/css /**");
         web.ignoring().antMatchers("/js/**");
         web.ignoring().antMatchers("/fonts/**");
     }
