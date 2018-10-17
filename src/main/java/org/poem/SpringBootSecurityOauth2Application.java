@@ -5,10 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 import java.util.regex.Pattern;
 
 @SpringBootApplication
+@EnableOAuth2Client
 public class SpringBootSecurityOauth2Application {
 
 
@@ -21,7 +23,5 @@ public class SpringBootSecurityOauth2Application {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootSecurityOauth2Application.class, args);
         String encodePassword = new BCryptPasswordEncoder( ).encode("secret");
-        logger.info("\n\t client_secret= " + encodePassword);
-        logger.info("is spring security 5 encode password:" + BCRYPT_PATTERN.matcher(encodePassword).find());
     }
 }

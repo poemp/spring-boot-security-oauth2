@@ -1,4 +1,8 @@
-#logging:
-##  level:
-##    root:
-##      debug
+spring:
+  security:
+    user:
+      name: root
+      password: root
+logging:
+  level:
+    root: debug
