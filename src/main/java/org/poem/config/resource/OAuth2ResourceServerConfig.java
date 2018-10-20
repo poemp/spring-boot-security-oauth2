@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 /**
  * 资源配置其
+ * @author poem
  */
 @Configuration
 @EnableResourceServer

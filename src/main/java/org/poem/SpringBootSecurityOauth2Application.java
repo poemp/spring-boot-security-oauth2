@@ -9,19 +9,18 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 import java.util.regex.Pattern;
 
+/** @author poem */
 @SpringBootApplication
 @EnableOAuth2Client
 public class SpringBootSecurityOauth2Application {
 
+  private static final Logger logger =
+      LoggerFactory.getLogger(SpringBootSecurityOauth2Application.class);
 
-    public static final   Pattern BCRYPT_PATTERN = Pattern
-            .compile("\\A\\$2a?\\$\\d\\d\\$[./0-9A-Za-z]{53}");
-
-
-    private static final Logger logger = LoggerFactory.getLogger(SpringBootSecurityOauth2Application.class);
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootSecurityOauth2Application.class, args);
-        String encodePassword = new BCryptPasswordEncoder( ).encode("secret");
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(SpringBootSecurityOauth2Application.class, args);
+    logger.info("SpringBootSecurityOauth2Application");
+    String encodePassword = new BCryptPasswordEncoder().encode("secret");
+    logger.info("encodePassword start " + encodePassword);
+  }
 }

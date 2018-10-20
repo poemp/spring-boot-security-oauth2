@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 /**
  * 认证服务配置
+ * @author poem
  */
 @Configuration
 @EnableAuthorizationServer
